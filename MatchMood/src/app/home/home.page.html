@@ -9,13 +9,90 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Accueil</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <p>Bienvenue !</p>
+  <ion-item>
+      <ion-textarea
+          [(ngModel)]="vibeText"
+          placeholder="Exprimez votre vibe ici..."
+          rows="3"
+          maxlength="150"
+          counter="true"
+          [autoGrow]="true"
+      ></ion-textarea>
+  </ion-item>
+  <ion-button expand="block" (click)="sendVibe()" [disabled]="!vibeText.trim() || isUploading">
+      <ion-icon name="send-outline" slot="start"></ion-icon>
+      Envoyer Vibe
+  </ion-button>
+
+  <hr>
+
+  <ion-button expand="block" (click)="capturePhoto()" [disabled]="isUploading">
+    <ion-icon name="camera-outline" slot="start"></ion-icon>
+    <span *ngIf="!isUploading">Ajouter une Photo</span>
+     <ion-spinner *ngIf="isUploading && !isLoadingVibe" name="crescent"></ion-spinner>
+  </ion-button>
+
+  <ion-button expand="block" (click)="captureVideo()" [disabled]="isUploading" color="secondary">
+    <ion-icon name="videocam-outline" slot="start"></ion-icon>
+    <span *ngIf="!isUploading">Enregistrer Vidéo (6s)</span>
+    <ion-spinner *ngIf="isUploading && !isLoadingVibe" name="crescent"></ion-spinner>
+  </ion-button>
+
+  <ion-img *ngIf="capturedImage && !isUploading" [src]="capturedImage" alt="Photo capturée"></ion-img>
+
+  <hr>
+
+  <h2>Posts Récents</h2>
+
+  <div *ngIf="posts$ | async as posts; else loadingPosts">
+    <ion-list *ngIf="posts.length > 0; else noPosts">
+      <ion-item *ngFor="let post of posts">
+        <div *ngIf="post.type === 'photo' && post.mediaUrl" class="post-item">
+          <ion-label>
+            <p><small>Posté par : {{ post.userId }}</small></p>
+            <p><small>{{ getJsDate(post.createdAt) | date:'short' }}</small></p>
+          </ion-label>
+          <ion-img [src]="post.mediaUrl" alt="Photo postée"></ion-img>
+        </div>
+        <div *ngIf="post.type === 'short' && post.mediaUrl" class="post-item">
+          <ion-label>
+            <p><small>Posté par : {{ post.userId }}</small></p>
+            <p><small>{{ getJsDate(post.createdAt) | date:'short' }}</small></p>
+          </ion-label>
+          <video controls [src]="post.mediaUrl" width="100%"></video>
+        </div>
+        <div *ngIf="post.type === 'vibe'" class="post-item">
+           <ion-label>
+              <h2>{{ post.textContent }}</h2>
+              <p><small>Posté par : {{ post.userId }}</small></p>
+              <p><small>{{ getJsDate(post.createdAt) | date:'short' }}</small></p>
+           </ion-label>
+        </div>
+
+        <ion-buttons slot="end">
+          <ion-button *ngIf="authService.currentUser?.uid === post.userId" color="danger" (click)="confirmDeletePost(post)">
+             <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+
+    <ng-template #noPosts>
+      <p class="ion-text-center">Aucun post à afficher pour le moment.</p>
+    </ng-template>
+  </div>
+
+  <ng-template #loadingPosts>
+    <div class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-template>
 
 </ion-content>
