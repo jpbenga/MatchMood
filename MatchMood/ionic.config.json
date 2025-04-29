@@ -1,0 +1,7 @@
+{
+  "name": "MatchMood",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
