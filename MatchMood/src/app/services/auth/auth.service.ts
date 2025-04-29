@@ -1,17 +1,18 @@
 // src/app/services/auth/auth.service.ts
-
+// (Seule la méthode loginWithGoogle est montrée, le reste du fichier est inchangé)
 import { Injectable, inject } from '@angular/core';
 import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPopup, // Ajout pour Google
-  GoogleAuthProvider, // Ajout pour Google
+  signInWithPopup,
+  GoogleAuthProvider, // Gardez cet import
   signOut,
   onAuthStateChanged,
   User as FirebaseUser,
   UserCredential,
-  AuthError
+  AuthError,
+  sendEmailVerification // Import pour la vérification email
 } from '@angular/fire/auth';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { UserService } from '../user/user.service';
@@ -47,6 +48,8 @@ export class AuthService {
       );
       if (userCredential.user) {
         await this.userService.createUserProfile(userCredential.user);
+        // Envoyer l'email de vérification après création du profil
+        await this.sendVerificationEmail(userCredential.user);
       } else {
          throw new Error("Utilisateur Firebase non retourné après l'inscription.");
       }
@@ -72,11 +75,10 @@ export class AuthService {
   async loginWithGoogle(): Promise<UserCredential> {
     try {
       const provider = new GoogleAuthProvider();
+      // Ajouter cette ligne pour forcer la sélection de compte
+      provider.setCustomParameters({ prompt: 'select_account' });
       const userCredential = await signInWithPopup(this.auth, provider);
-      // Crée ou met à jour le profil Firestore lors de la connexion Google
       if (userCredential.user) {
-         // Utiliser setDoc (dans createUserProfile) est idempotent, donc OK ici.
-         // Une logique plus fine pourrait vérifier si le doc existe avant de créer.
         await this.userService.createUserProfile(userCredential.user);
       } else {
         throw new Error("Utilisateur Firebase non retourné après la connexion Google.");
@@ -85,6 +87,15 @@ export class AuthService {
     } catch (e) {
       this.handleAuthError(e);
     }
+  }
+
+  async sendVerificationEmail(user: FirebaseUser): Promise<void> {
+      try {
+          await sendEmailVerification(user);
+      } catch (error) {
+          console.error("Erreur lors de l'envoi de l'email de vérification:", error);
+          // Gérer l'erreur (ex: afficher un message) mais ne pas bloquer le flux principal
+      }
   }
 
 
