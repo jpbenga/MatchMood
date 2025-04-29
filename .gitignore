@@ -1,0 +1,25 @@
+# Dependencies
+/node_modules
+
+# Build files
+/www
+/platforms
+/plugins
+*.js.map
+*.tsbuildinfo
+
+# IDEs and editors
+/.idea
+/.vscode
+*.swp
+*.sublime-workspace
+
+# Environment files
+.env*
+# (Optionnel: si vous ne versionnez pas la config prod/test)
+# src/environments/environment.prod.ts
+# src/environments/environment.test.ts
+
+# OS generated files
+.DS_Store
+Thumbs.db
