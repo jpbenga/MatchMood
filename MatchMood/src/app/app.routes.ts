@@ -23,5 +23,17 @@ export const routes: Routes = [
     redirectTo: 'home', // Redirige la racine vers home (le guard s'appliquera)
     pathMatch: 'full'
   },
+  {
+    path: 'find-friends',
+    loadComponent: () => import('./pages/find-friends/find-friends.page').then( m => m.FindFriendsPage)
+  },
+  {
+    path: 'friend-requests',
+    loadComponent: () => import('./pages/friend-requests/friend-requests.page').then( m => m.FriendRequestsPage)
+  },
+  {
+    path: 'friend-list',
+    loadComponent: () => import('./pages/friend-list/friend-list.page').then( m => m.FriendListPage)
+  },
   // Ajoutez d'autres routes ici...
 ];

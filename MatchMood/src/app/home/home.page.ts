@@ -1,19 +1,22 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Ajout pour ngModel
+import { FormsModule } from '@angular/forms';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton,
-  IonIcon, IonImg, IonList, IonItem, IonLabel, IonSpinner, IonTextarea, // Ajout IonTextarea
+  IonIcon, IonImg, IonList, IonItem, IonLabel, IonSpinner, IonTextarea,
   ToastController, LoadingController, AlertController
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { logOutOutline, cameraOutline, videocamOutline, trashOutline, sendOutline } from 'ionicons/icons'; // Ajout sendOutline
-import { Observable } from 'rxjs';
+import { logOutOutline, cameraOutline, videocamOutline, trashOutline, sendOutline, searchOutline, peopleOutline, peopleCircleOutline } from 'ionicons/icons'; // Ajout des dernières icônes
+import { Observable, of } from 'rxjs'; // Ajout de 'of'
+import { switchMap } from 'rxjs/operators'; // Ajout de 'switchMap'
 import { AuthService } from '../services/auth/auth.service';
 import { PhotoService, UploadResult } from '../services/photo/photo.service';
 import { PostService, NewPostData } from '../services/post/post.service';
+import { UserService } from '../services/user/user.service'; // Déjà importé
 import { Post } from '../models/post.model';
+import { User } from '../models/user.model'; // Importer User ici aussi
 import { Photo } from '@capacitor/camera';
 import { MediaFile } from '@awesome-cordova-plugins/media-capture/ngx';
 import { Timestamp } from 'firebase/firestore';
@@ -26,32 +29,48 @@ import { Timestamp } from 'firebase/firestore';
   standalone: true,
   imports: [
     IonHeader, IonToolbar, IonTitle, IonContent, IonButtons, IonButton,
-    IonIcon, IonImg, IonList, IonItem, IonLabel, IonSpinner, IonTextarea, // Ajout IonTextarea
+    IonIcon, IonImg, IonList, IonItem, IonLabel, IonSpinner, IonTextarea,
     CommonModule,
-    FormsModule // Ajout FormsModule
+    FormsModule
   ],
 })
 export class HomePage implements OnInit {
   capturedImage: string | null = null;
   isUploading = false;
-  isLoadingVibe = false; // Spécifique pour le chargement des vibes
+  isLoadingVibe = false;
   posts$!: Observable<Post[]>;
-  vibeText: string = ''; // Pour lier au textarea
+  vibeText: string = '';
+  userProfile$!: Observable<User | undefined>; // Observable pour le profil utilisateur
 
   public authService = inject(AuthService);
   private router = inject(Router);
   private photoService = inject(PhotoService);
   private postService = inject(PostService);
+  private userService = inject(UserService);
   private loadingCtrl = inject(LoadingController);
   private toastCtrl = inject(ToastController);
   private alertCtrl = inject(AlertController);
 
   constructor() {
-    addIcons({ logOutOutline, cameraOutline, videocamOutline, trashOutline, sendOutline }); // Ajout sendOutline
+    addIcons({
+        logOutOutline, cameraOutline, videocamOutline, trashOutline,
+        sendOutline, searchOutline, peopleOutline, peopleCircleOutline
+    });
   }
 
   ngOnInit() {
     this.posts$ = this.postService.getRecentPosts();
+
+    // Récupérer le profil utilisateur basé sur l'état d'authentification
+    this.userProfile$ = this.authService.user$.pipe(
+        switchMap(firebaseUser => {
+            if (firebaseUser) {
+                return this.userService.getUserProfile(firebaseUser.uid);
+            } else {
+                return of(undefined); // Retourne undefined si non connecté
+            }
+        })
+    );
   }
 
   getJsDate(timestamp: any): Date | null {
@@ -61,31 +80,23 @@ export class HomePage implements OnInit {
     return null;
   }
 
-  // Nouvelle méthode pour envoyer une vibe
   async sendVibe() {
-      if (!this.vibeText || !this.vibeText.trim()) {
-          return; // Ne rien envoyer si le texte est vide
-      }
-      this.isLoadingVibe = true; // Utiliser un indicateur séparé
+      if (!this.vibeText || !this.vibeText.trim()) return;
+      this.isLoadingVibe = true;
       const loading = await this.loadingCtrl.create({ message: 'Envoi de la vibe...' });
       await loading.present();
-
       const postData: NewPostData = {
           type: 'vibe',
-          textContent: this.vibeText.trim(), // Enlever les espaces superflus
+          textContent: this.vibeText.trim(),
           mediaUrl: null,
           filePath: null
-          // associatedMatchId: 'ID_DU_MATCH_ACTUEL' // À ajouter plus tard
       };
-
       try {
           const postId = await this.postService.addPost(postData);
           await loading.dismiss();
           this.isLoadingVibe = false;
-
           if (postId) {
-              console.log('Post vibe créé avec ID:', postId);
-              this.vibeText = ''; // Vider le champ après succès
+              this.vibeText = '';
               await this.presentToast('Vibe envoyée !', 'success');
           } else {
               throw new Error("La création du post vibe n'a pas retourné d'ID.");
@@ -97,7 +108,6 @@ export class HomePage implements OnInit {
           await this.presentToast(error.message || "Erreur lors de l'envoi.", 'danger');
       }
   }
-
 
   async capturePhoto() {
     const photo = await this.photoService.takePicture();
@@ -115,14 +125,11 @@ export class HomePage implements OnInit {
     const loading = await this.loadingCtrl.create({ message: 'Publication photo...' });
     await loading.present();
     let uploadResult: UploadResult | null = null;
-
     try {
       uploadResult = await this.photoService.uploadPhoto(photo);
-
-      if (!uploadResult || !uploadResult.downloadUrl || !uploadResult.filePath) {
+      if (!uploadResult?.downloadUrl || !uploadResult?.filePath) {
          throw new Error("L'upload photo n'a pas retourné les informations nécessaires.");
       }
-
       const postData: NewPostData = {
         type: 'photo',
         mediaUrl: uploadResult.downloadUrl,
@@ -133,13 +140,11 @@ export class HomePage implements OnInit {
       await loading.dismiss();
       this.isUploading = false;
       this.capturedImage = null;
-
       if (postId) {
           await this.presentToast('Photo publiée avec succès !', 'success');
       } else {
           throw new Error("La création du post photo n'a pas retourné d'ID.");
       }
-
     } catch (error: any) {
       await loading.dismiss();
       this.isUploading = false;
@@ -162,14 +167,11 @@ export class HomePage implements OnInit {
       const loading = await this.loadingCtrl.create({ message: 'Publication vidéo...' });
       await loading.present();
       let uploadResult: UploadResult | null = null;
-
       try {
           uploadResult = await this.photoService.uploadMediaFile(mediaFile);
-
-          if (!uploadResult || !uploadResult.downloadUrl || !uploadResult.filePath) {
+          if (!uploadResult?.downloadUrl || !uploadResult?.filePath) {
               throw new Error("L'upload vidéo n'a pas retourné les informations nécessaires.");
           }
-
           const postData: NewPostData = {
               type: 'short',
               mediaUrl: uploadResult.downloadUrl,
@@ -179,13 +181,11 @@ export class HomePage implements OnInit {
           const postId = await this.postService.addPost(postData);
           await loading.dismiss();
           this.isUploading = false;
-
           if (postId) {
               await this.presentToast('Vidéo publiée avec succès !', 'success');
           } else {
               throw new Error("La création du post vidéo n'a pas retourné d'ID.");
           }
-
       } catch (error: any) {
           await loading.dismiss();
           this.isUploading = false;
@@ -196,12 +196,10 @@ export class HomePage implements OnInit {
 
   async confirmDeletePost(post: Post) {
       if (!post.id) return;
-
       if (this.authService.currentUser?.uid !== post.userId) {
           await this.presentToast("Vous ne pouvez pas supprimer ce post.", 'danger');
           return;
       }
-
       const alert = await this.alertCtrl.create({
           header: 'Confirmer',
           message: 'Voulez-vous vraiment supprimer ce post ?',
@@ -232,6 +230,17 @@ export class HomePage implements OnInit {
       await alert.present();
   }
 
+  goToFindFriends() {
+    this.router.navigate(['/find-friends']);
+  }
+
+  goToFriendRequests() {
+      this.router.navigate(['/friend-requests']);
+  }
+
+  goToFriendList() {
+      this.router.navigate(['/friend-list']);
+  }
 
   async logout() {
     try {
@@ -242,10 +251,10 @@ export class HomePage implements OnInit {
     }
   }
 
-  async presentToast(message: string, color: 'success' | 'danger' = 'danger') {
+  async presentToast(message: string, color: 'success' | 'danger' | 'medium' = 'danger') {
     const toast = await this.toastCtrl.create({
       message: message,
-      duration: 3000,
+      duration: 2500,
       position: 'bottom',
       color: color
     });

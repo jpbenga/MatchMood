@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mes Amis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="friends$ | async as friends; else loading">
+    <div *ngIf="friends.length > 0; else noFriends">
+      <ion-item *ngFor="let friend of friends">
+        <ion-avatar slot="start">
+          <ion-img [src]="friend.photoURL || 'assets/icon/avatar-placeholder.png'"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>{{ friend.displayName || 'Utilisateur' }}</h2>
+          <p>{{ friend.email }}</p>
+        </ion-label>
+        <ion-buttons slot="end">
+           <ion-button color="danger" fill="clear" (click)="confirmRemoveFriend(friend)">
+              <ion-icon slot="icon-only" name="person-remove-outline"></ion-icon>
+           </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </div>
+    <ng-template #noFriends>
+      <ion-item lines="none">
+        <ion-label class="ion-text-center ion-padding">Vous n'avez pas encore d'amis.</ion-label>
+      </ion-item>
+    </ng-template>
+  </ion-list>
+
+  <ng-template #loading>
+    <div class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-template>
+</ion-content>

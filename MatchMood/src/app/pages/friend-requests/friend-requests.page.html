@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Demandes d'amis</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngIf="requests$ | async as requests; else loading">
+    <div *ngIf="requests.length > 0; else noRequests">
+      <ion-item *ngFor="let request of requests">
+        <ion-avatar slot="start">
+           <ion-img [src]="request.senderPhotoURL || 'assets/icon/avatar-placeholder.png'"></ion-img>
+        </ion-avatar>
+        <ion-label>
+          <h2>Demande de : {{ request.senderDisplayName }}</h2>
+          <p><small>{{ getJsDate(request.createdAt) | date:'shortDate' }}</small></p>
+        </ion-label>
+        <ion-buttons slot="end">
+          <ion-button color="success" fill="clear" (click)="acceptRequest(request)">
+            <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <ion-button color="danger" fill="clear" (click)="declineRequest(request.id!)">
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </div>
+    <ng-template #noRequests>
+      <ion-item lines="none">
+        <ion-label class="ion-text-center ion-padding">Aucune demande d'ami en attente.</ion-label>
+      </ion-item>
+    </ng-template>
+  </ion-list>
+
+  <ng-template #loading>
+    <div class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-template>
+</ion-content>

@@ -1,21 +1,21 @@
 // src/app/services/auth/auth.service.ts
-// (Seule la méthode loginWithGoogle est montrée, le reste du fichier est inchangé)
-import { Injectable, inject } from '@angular/core';
+
+import { Injectable, inject, Injector } from '@angular/core'; // Injector ajouté
 import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signInWithPopup,
-  GoogleAuthProvider, // Gardez cet import
+  GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
   User as FirebaseUser,
   UserCredential,
   AuthError,
-  sendEmailVerification // Import pour la vérification email
+  sendEmailVerification
 } from '@angular/fire/auth';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { UserService } from '../user/user.service';
+import { UserService } from '../user/user.service'; // Garder l'import pour le type
 
 export interface Credentials {
   email: string;
@@ -30,7 +30,10 @@ export class AuthService {
   user$ = this.userAuthState.asObservable();
   currentUser: FirebaseUser | null = null;
 
-  private userService = inject(UserService);
+  // Supprimer l'injection directe de UserService
+  // private userService = inject(UserService);
+  // Injecter Injector à la place
+  private injector = inject(Injector);
 
   constructor(private auth: Auth) {
     onAuthStateChanged(this.auth, (user) => {
@@ -47,8 +50,9 @@ export class AuthService {
         credentials.password
       );
       if (userCredential.user) {
-        await this.userService.createUserProfile(userCredential.user);
-        // Envoyer l'email de vérification après création du profil
+        // Obtenir UserService via l'Injector SEULEMENT ici
+        const userService = this.injector.get(UserService);
+        await userService.createUserProfile(userCredential.user);
         await this.sendVerificationEmail(userCredential.user);
       } else {
          throw new Error("Utilisateur Firebase non retourné après l'inscription.");
@@ -75,11 +79,12 @@ export class AuthService {
   async loginWithGoogle(): Promise<UserCredential> {
     try {
       const provider = new GoogleAuthProvider();
-      // Ajouter cette ligne pour forcer la sélection de compte
       provider.setCustomParameters({ prompt: 'select_account' });
       const userCredential = await signInWithPopup(this.auth, provider);
       if (userCredential.user) {
-        await this.userService.createUserProfile(userCredential.user);
+         // Obtenir UserService via l'Injector SEULEMENT ici aussi
+         const userService = this.injector.get(UserService);
+        await userService.createUserProfile(userCredential.user);
       } else {
         throw new Error("Utilisateur Firebase non retourné après la connexion Google.");
       }
@@ -94,7 +99,6 @@ export class AuthService {
           await sendEmailVerification(user);
       } catch (error) {
           console.error("Erreur lors de l'envoi de l'email de vérification:", error);
-          // Gérer l'erreur (ex: afficher un message) mais ne pas bloquer le flux principal
       }
   }
 
@@ -121,7 +125,6 @@ export class AuthService {
   private handleAuthError(error: any): never {
     const firebaseError = error as AuthError;
     console.error("Erreur Firebase Auth:", firebaseError.code, firebaseError.message);
-
     let friendlyMessage = "Une erreur d'authentification est survenue.";
     switch (firebaseError.code) {
       case 'auth/user-not-found':
