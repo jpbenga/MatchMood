@@ -1,0 +1,396 @@
+[debug] [2025-04-30T12:06:45.824Z] ----------------------------------------------------------------------
+[debug] [2025-04-30T12:06:45.827Z] Command:       /nix/store/ixbb20farqh1f4fqbmsn6b1ixn8mc8ij-nodejs-20.18.1/bin/node /home/user/.global_modules/bin/firebase deploy --only functions
+[debug] [2025-04-30T12:06:45.828Z] CLI Version:   14.2.1
+[debug] [2025-04-30T12:06:45.828Z] Platform:      linux
+[debug] [2025-04-30T12:06:45.828Z] Node Version:  v20.18.1
+[debug] [2025-04-30T12:06:45.829Z] Time:          Wed Apr 30 2025 12:06:45 GMT+0000 (Coordinated Universal Time)
+[debug] [2025-04-30T12:06:45.829Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-30T12:06:46.338Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-30T12:06:46.339Z] > authorizing via signed-in user (jpaulbenga@gmail.com)
+[debug] [2025-04-30T12:06:46.339Z] [iam] checking project matchmood-24471 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2025-04-30T12:06:46.341Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:06:46.341Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:06:46.343Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions [none]
+[debug] [2025-04-30T12:06:46.343Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:06:46.343Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-04-30T12:06:46.629Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions 200
+[debug] [2025-04-30T12:06:46.629Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2025-04-30T12:06:46.630Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:06:46.630Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:06:46.630Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/matchmood-24471/serviceAccounts/matchmood-24471@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-04-30T12:06:46.630Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/matchmood-24471/serviceAccounts/matchmood-24471@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-04-30T12:06:47.284Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/matchmood-24471/serviceAccounts/matchmood-24471@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-04-30T12:06:47.284Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/matchmood-24471/serviceAccounts/matchmood-24471@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[info] 
+[info] === Deploying to 'matchmood-24471'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run build
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2025-04-30T12:07:05.058Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.058Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.058Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 [none]
+[debug] [2025-04-30T12:07:05.734Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 200
+[debug] [2025-04-30T12:07:05.734Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 {"projectNumber":"188280949578","projectId":"matchmood-24471","lifecycleState":"ACTIVE","name":"MatchMood-dev","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-04-28T23:47:23.074536Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:05.736Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.737Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.737Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.737Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:05.737Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.737Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:05.738Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.738Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:05.738Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-04-30T12:07:05.738Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:05.740Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-04-30T12:07:05.740Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:05.742Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com [none]
+[debug] [2025-04-30T12:07:05.743Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:05.745Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com [none]
+[debug] [2025-04-30T12:07:05.745Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:06.560Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/runtimeconfig.googleapis.com 200
+[debug] [2025-04-30T12:07:06.560Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-04-30T12:07:06.579Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com 200
+[debug] [2025-04-30T12:07:06.580Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com [omitted]
+[warn] ⚠  artifactregistry: missing required API artifactregistry.googleapis.com. Enabling now... 
+[debug] [2025-04-30T12:07:06.581Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:06.581Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:06.581Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com:enable [none]
+[debug] [2025-04-30T12:07:06.581Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com:enable x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:06.584Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudfunctions.googleapis.com 200
+[debug] [2025-04-30T12:07:06.584Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudfunctions.googleapis.com [omitted]
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:06.611Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com 200
+[debug] [2025-04-30T12:07:06.612Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com [omitted]
+[warn] ⚠  functions: missing required API cloudbuild.googleapis.com. Enabling now... 
+[debug] [2025-04-30T12:07:06.612Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:06.612Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:06.612Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com:enable [none]
+[debug] [2025-04-30T12:07:06.612Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com:enable x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:07.706Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com:enable 200
+[debug] [2025-04-30T12:07:07.706Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com:enable [omitted]
+[debug] [2025-04-30T12:07:07.740Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com:enable 200
+[debug] [2025-04-30T12:07:07.740Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com:enable [omitted]
+[debug] [2025-04-30T12:07:17.712Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:17.712Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:17.712Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com [none]
+[debug] [2025-04-30T12:07:17.713Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:17.740Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:17.740Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:17.741Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com [none]
+[debug] [2025-04-30T12:07:17.741Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:18.571Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com 200
+[debug] [2025-04-30T12:07:18.572Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/artifactregistry.googleapis.com [omitted]
+[info] ✔  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:18.586Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com 200
+[debug] [2025-04-30T12:07:18.586Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/cloudbuild.googleapis.com [omitted]
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:18.590Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:18.590Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:18.590Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/matchmood-24471/adminSdkConfig [none]
+[debug] [2025-04-30T12:07:19.038Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/matchmood-24471/adminSdkConfig 200
+[debug] [2025-04-30T12:07:19.038Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/matchmood-24471/adminSdkConfig {"projectId":"matchmood-24471","storageBucket":"matchmood-24471.firebasestorage.app"}
+[debug] [2025-04-30T12:07:19.039Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:19.039Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:19.039Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/matchmood-24471/configs [none]
+[debug] [2025-04-30T12:07:19.236Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/matchmood-24471/configs 200
+[debug] [2025-04-30T12:07:19.236Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/matchmood-24471/configs {}
+[debug] [2025-04-30T12:07:19.238Z] Validating nodejs source
+[debug] [2025-04-30T12:07:20.047Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^13.3.0",
+    "firebase-functions": "^6.3.2"
+  },
+  "devDependencies": {
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.8.3"
+  },
+  "private": true
+}
+[debug] [2025-04-30T12:07:20.048Z] Building nodejs source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-04-30T12:07:20.052Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-04-30T12:07:20.059Z] Found firebase-functions binary at '/home/user/MatchMood/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8537
+
+[debug] [2025-04-30T12:07:23.509Z] Got response from /__/functions.yaml {"endpoints":{"sendPostNotification":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","region":["europe-west1"],"labels":{},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","eventFilters":{"database":"(default)","namespace":"(default)"},"eventFilterPathPatterns":{"document":"posts/{postId}"},"retry":false},"entryPoint":"sendPostNotification"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] i  extensions: ensuring required API firebaseextensions.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:27.540Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:27.540Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:27.541Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com [none]
+[debug] [2025-04-30T12:07:27.541Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:28.374Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com 200
+[debug] [2025-04-30T12:07:28.374Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com [omitted]
+[warn] ⚠  extensions: missing required API firebaseextensions.googleapis.com. Enabling now... 
+[debug] [2025-04-30T12:07:28.375Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:28.375Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:28.375Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com:enable [none]
+[debug] [2025-04-30T12:07:28.375Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com:enable x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:28.943Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com:enable 200
+[debug] [2025-04-30T12:07:28.943Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com:enable [omitted]
+[debug] [2025-04-30T12:07:38.946Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:38.947Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:38.947Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com [none]
+[debug] [2025-04-30T12:07:38.947Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:39.765Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com 200
+[debug] [2025-04-30T12:07:39.766Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/firebaseextensions.googleapis.com [omitted]
+[info] ✔  extensions: required API firebaseextensions.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:39.769Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-30T12:07:39.769Z] > authorizing via signed-in user (jpaulbenga@gmail.com)
+[debug] [2025-04-30T12:07:39.770Z] [iam] checking project matchmood-24471 for permissions ["firebase.projects.get","firebaseextensions.instances.list"]
+[debug] [2025-04-30T12:07:39.770Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:39.770Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:39.770Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions [none]
+[debug] [2025-04-30T12:07:39.770Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:39.770Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-04-30T12:07:40.408Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions 200
+[debug] [2025-04-30T12:07:40.408Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471:testIamPermissions {"permissions":["firebase.projects.get","firebaseextensions.instances.list"]}
+[debug] [2025-04-30T12:07:40.409Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:40.409Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:40.409Z] >>> [apiv2][query] GET https://firebaseextensions.googleapis.com/v1beta/projects/matchmood-24471/instances pageSize=100&pageToken=
+[debug] [2025-04-30T12:07:42.243Z] <<< [apiv2][status] GET https://firebaseextensions.googleapis.com/v1beta/projects/matchmood-24471/instances 200
+[debug] [2025-04-30T12:07:42.243Z] <<< [apiv2][body] GET https://firebaseextensions.googleapis.com/v1beta/projects/matchmood-24471/instances {}
+[info] i  functions: preparing functions directory for uploading... 
+[info] i  functions: packaged /home/user/MatchMood/functions (66.22 KB) for uploading 
+[debug] [2025-04-30T12:07:42.311Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:42.311Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:42.311Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/projects/matchmood-24471/locations/-/functions [none]
+[debug] [2025-04-30T12:07:42.836Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/projects/matchmood-24471/locations/-/functions 200
+[debug] [2025-04-30T12:07:42.836Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/projects/matchmood-24471/locations/-/functions {}
+[debug] [2025-04-30T12:07:42.836Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:42.836Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:42.837Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/-/functions filter=environment%3D%22GEN_2%22
+[debug] [2025-04-30T12:07:43.800Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/-/functions 200
+[debug] [2025-04-30T12:07:43.801Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/-/functions {}
+[debug] [2025-04-30T12:07:43.802Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.802Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.802Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/matchmood-24471/databases/(default) [none]
+[debug] [2025-04-30T12:07:43.917Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/matchmood-24471/databases/(default) 200
+[debug] [2025-04-30T12:07:43.917Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/matchmood-24471/databases/(default) {"name":"projects/matchmood-24471/databases/(default)","uid":"002b9f2d-e460-4a8a-8e7f-02349d6f7d33","createTime":"2025-04-28T23:52:05.370869Z","updateTime":"2025-04-28T23:52:05.370869Z","locationId":"eur3","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2025-04-30T11:07:43.913267Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"e","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"etag":"ILXd8Z3c/4wDMMfCnqX0/IwD"}
+[info] i  functions: ensuring required API run.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:43.919Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.919Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  functions: ensuring required API eventarc.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  functions: ensuring required API pubsub.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  functions: ensuring required API storage.googleapis.com is enabled... 
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.920Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:43.920Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com [none]
+[debug] [2025-04-30T12:07:43.921Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:43.921Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com [none]
+[debug] [2025-04-30T12:07:43.921Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:43.922Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/pubsub.googleapis.com [none]
+[debug] [2025-04-30T12:07:43.922Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/pubsub.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:43.923Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/storage.googleapis.com [none]
+[debug] [2025-04-30T12:07:43.923Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/storage.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:44.259Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/pubsub.googleapis.com 200
+[debug] [2025-04-30T12:07:44.260Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/pubsub.googleapis.com [omitted]
+[info] ✔  functions: required API pubsub.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:44.726Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com 200
+[debug] [2025-04-30T12:07:44.727Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com [omitted]
+[warn] ⚠  functions: missing required API run.googleapis.com. Enabling now... 
+[debug] [2025-04-30T12:07:44.727Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:44.728Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:44.728Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com:enable [none]
+[debug] [2025-04-30T12:07:44.728Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com:enable x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:44.731Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com 200
+[debug] [2025-04-30T12:07:44.731Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com [omitted]
+[warn] ⚠  functions: missing required API eventarc.googleapis.com. Enabling now... 
+[debug] [2025-04-30T12:07:44.731Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:44.731Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:44.731Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com:enable [none]
+[debug] [2025-04-30T12:07:44.732Z] >>> [apiv2][(partial)header] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com:enable x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:44.742Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/storage.googleapis.com 200
+[debug] [2025-04-30T12:07:44.742Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/storage.googleapis.com [omitted]
+[info] ✔  functions: required API storage.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:45.595Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com:enable 200
+[debug] [2025-04-30T12:07:45.595Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com:enable [omitted]
+[debug] [2025-04-30T12:07:46.088Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com:enable 200
+[debug] [2025-04-30T12:07:46.088Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com:enable [omitted]
+[debug] [2025-04-30T12:07:55.601Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:55.601Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:55.601Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com [none]
+[debug] [2025-04-30T12:07:55.602Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:56.088Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:56.088Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:56.088Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com [none]
+[debug] [2025-04-30T12:07:56.088Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com x-goog-quota-user=projects/matchmood-24471
+[debug] [2025-04-30T12:07:56.427Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com 200
+[debug] [2025-04-30T12:07:56.427Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/run.googleapis.com [omitted]
+[info] ✔  functions: required API run.googleapis.com is enabled 
+[debug] [2025-04-30T12:07:57.049Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com 200
+[debug] [2025-04-30T12:07:57.050Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/matchmood-24471/services/eventarc.googleapis.com [omitted]
+[info] ✔  functions: required API eventarc.googleapis.com is enabled 
+[info] i  functions: generating the service identity for pubsub.googleapis.com... 
+[debug] [2025-04-30T12:07:57.052Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:57.052Z] Checked if tokens are valid: true, expires at: 1746017938128
+[info] i  functions: generating the service identity for eventarc.googleapis.com... 
+[debug] [2025-04-30T12:07:57.053Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:57.053Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:57.053Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/pubsub.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-04-30T12:07:57.053Z] >>> [apiv2][query] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/eventarc.googleapis.com:generateServiceIdentity [none]
+[debug] [2025-04-30T12:07:57.630Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/pubsub.googleapis.com:generateServiceIdentity 200
+[debug] [2025-04-30T12:07:57.630Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/pubsub.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-188280949578@gcp-sa-pubsub.iam.gserviceaccount.com","uniqueId":"109848743159421728630"}}
+[debug] [2025-04-30T12:07:57.669Z] <<< [apiv2][status] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/eventarc.googleapis.com:generateServiceIdentity 200
+[debug] [2025-04-30T12:07:57.669Z] <<< [apiv2][body] POST https://serviceusage.googleapis.com/v1beta1/projects/188280949578/services/eventarc.googleapis.com:generateServiceIdentity {"name":"operations/finished.DONE_OPERATION","done":true,"response":{"@type":"type.googleapis.com/google.api.serviceusage.v1beta1.ServiceIdentity","email":"service-188280949578@gcp-sa-eventarc.iam.gserviceaccount.com","uniqueId":"107470454407626278632"}}
+[debug] [2025-04-30T12:07:57.672Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:57.673Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:57.673Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:getIamPolicy [none]
+[debug] [2025-04-30T12:07:58.397Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:getIamPolicy 200
+[debug] [2025-04-30T12:07:58.398Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:getIamPolicy {"version":1,"etag":"BwYz/cQF1dM=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:188280949578@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-188280949578@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-188280949578@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:188280949578@cloudservices.gserviceaccount.com","serviceAccount:matchmood-24471@appspot.gserviceaccount.com","serviceAccount:188280949578-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-188280949578@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:jpaulbenga@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-188280949578@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]}]}
+[debug] [2025-04-30T12:07:58.398Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:58.398Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:58.399Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:setIamPolicy [none]
+[debug] [2025-04-30T12:07:58.399Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:setIamPolicy {"policy":{"version":1,"etag":"BwYz/cQF1dM=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:188280949578@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-188280949578@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-188280949578@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:188280949578@cloudservices.gserviceaccount.com","serviceAccount:matchmood-24471@appspot.gserviceaccount.com","serviceAccount:188280949578-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-188280949578@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com","serviceAccount:service-188280949578@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:jpaulbenga@gmail.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-188280949578@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/run.invoker","members":["serviceAccount:188280949578-compute@developer.gserviceaccount.com"]},{"role":"roles/eventarc.eventReceiver","members":["serviceAccount:188280949578-compute@developer.gserviceaccount.com"]}]},"updateMask":"bindings"}
+[debug] [2025-04-30T12:07:59.149Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:setIamPolicy 200
+[debug] [2025-04-30T12:07:59.150Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/188280949578:setIamPolicy {"version":1,"etag":"BwYz/cSjrqk=","bindings":[{"role":"roles/cloudbuild.builds.builder","members":["serviceAccount:188280949578@cloudbuild.gserviceaccount.com"]},{"role":"roles/cloudbuild.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-cloudbuild.iam.gserviceaccount.com"]},{"role":"roles/cloudfunctions.serviceAgent","members":["serviceAccount:service-188280949578@gcf-admin-robot.iam.gserviceaccount.com"]},{"role":"roles/containerregistry.ServiceAgent","members":["serviceAccount:service-188280949578@containerregistry.iam.gserviceaccount.com"]},{"role":"roles/editor","members":["serviceAccount:188280949578-compute@developer.gserviceaccount.com","serviceAccount:188280949578@cloudservices.gserviceaccount.com","serviceAccount:matchmood-24471@appspot.gserviceaccount.com"]},{"role":"roles/eventarc.eventReceiver","members":["serviceAccount:188280949578-compute@developer.gserviceaccount.com"]},{"role":"roles/firebase.managementServiceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebase.iam.gserviceaccount.com"]},{"role":"roles/firebase.sdkAdminServiceAgent","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebaseauth.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]},{"role":"roles/firebasemods.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasemods.iam.gserviceaccount.com"]},{"role":"roles/firebaserules.system","members":["serviceAccount:service-188280949578@firebase-rules.iam.gserviceaccount.com"]},{"role":"roles/firebasestorage.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firebasestorage.iam.gserviceaccount.com"]},{"role":"roles/firestore.serviceAgent","members":["serviceAccount:service-188280949578@gcp-sa-firestore.iam.gserviceaccount.com"]},{"role":"roles/iam.serviceAccountTokenCreator","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com","serviceAccount:service-188280949578@gcp-sa-pubsub.iam.gserviceaccount.com"]},{"role":"roles/owner","members":["user:jpaulbenga@gmail.com"]},{"role":"roles/run.invoker","members":["serviceAccount:188280949578-compute@developer.gserviceaccount.com"]},{"role":"roles/run.serviceAgent","members":["serviceAccount:service-188280949578@serverless-robot-prod.iam.gserviceaccount.com"]},{"role":"roles/storage.admin","members":["serviceAccount:firebase-adminsdk-fbsvc@matchmood-24471.iam.gserviceaccount.com"]}]}
+[debug] [2025-04-30T12:07:59.151Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:59.151Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:59.151Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 [none]
+[debug] [2025-04-30T12:07:59.340Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 200
+[debug] [2025-04-30T12:07:59.340Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/matchmood-24471 {"projectNumber":"188280949578","projectId":"matchmood-24471","lifecycleState":"ACTIVE","name":"MatchMood-dev","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-04-28T23:47:23.074536Z"}
+[debug] [2025-04-30T12:07:59.341Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:59.342Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:07:59.342Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/matchmood-24471/billingInfo [none]
+[debug] [2025-04-30T12:08:00.054Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/matchmood-24471/billingInfo 200
+[debug] [2025-04-30T12:08:00.054Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/matchmood-24471/billingInfo {"name":"projects/matchmood-24471/billingInfo","projectId":"matchmood-24471","billingAccountName":"billingAccounts/018820-8F48D6-81DA3F","billingEnabled":true}
+[debug] [2025-04-30T12:08:00.056Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:00.056Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:00.056Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions:generateUploadUrl [none]
+[debug] [2025-04-30T12:08:02.303Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions:generateUploadUrl 200
+[debug] [2025-04-30T12:08:02.303Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions:generateUploadUrl {"uploadUrl":"https://storage.googleapis.com/gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com/a29730d6-467e-4900-bfd7-f47b36276d86.zip?GoogleAccessId=service-188280949578@gcf-admin-robot.iam.gserviceaccount.com&Expires=1746016682&Signature=OmHvw6x5SmiO9G7XYujOm8185mPJwh%2BRTzpF%2BeflKRhPdABjABgHDAKk4DsKMX19%2Bf8PbLQFyXsxKLC5Zo75uEYTDvQF4DbKEAKCIwG5tJ2AIKxsuJbQvB2PSRnLDIwGDgtWF%2FxWNVh%2F21MmP2BifVgIqMlIzVOUm2xPyVNip1q4gjclfPldqlojdKVBeBIsDBYVjHBubCNs95zKFtNKzQeKYnA1kpJLQ69AgOnmw9BRrqpNZDItty8qZFZLvqgTOEHzv%2FrhtPeHnesNq1LTsE62kirwZz5ls9SMbxySNqx9kEGLk1h%2B7FJ5%2Fb5t2IWtW%2FbRz7AkxTi9Nqot84XTWQ%3D%3D","storageSource":{"bucket":"gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com","object":"a29730d6-467e-4900-bfd7-f47b36276d86.zip"}}
+[debug] [2025-04-30T12:08:02.306Z] >>> [apiv2][query] PUT https://storage.googleapis.com/gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com/a29730d6-467e-4900-bfd7-f47b36276d86.zip GoogleAccessId=service-188280949578%40gcf-admin-robot.iam.gserviceaccount.com&Expires=1746016682&Signature=OmHvw6x5SmiO9G7XYujOm8185mPJwh%2BRTzpF%2BeflKRhPdABjABgHDAKk4DsKMX19%2Bf8PbLQFyXsxKLC5Zo75uEYTDvQF4DbKEAKCIwG5tJ2AIKxsuJbQvB2PSRnLDIwGDgtWF%2FxWNVh%2F21MmP2BifVgIqMlIzVOUm2xPyVNip1q4gjclfPldqlojdKVBeBIsDBYVjHBubCNs95zKFtNKzQeKYnA1kpJLQ69AgOnmw9BRrqpNZDItty8qZFZLvqgTOEHzv%2FrhtPeHnesNq1LTsE62kirwZz5ls9SMbxySNqx9kEGLk1h%2B7FJ5%2Fb5t2IWtW%2FbRz7AkxTi9Nqot84XTWQ%3D%3D
+[debug] [2025-04-30T12:08:02.306Z] >>> [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com/a29730d6-467e-4900-bfd7-f47b36276d86.zip [stream]
+[debug] [2025-04-30T12:08:02.445Z] <<< [apiv2][status] PUT https://storage.googleapis.com/gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com/a29730d6-467e-4900-bfd7-f47b36276d86.zip 200
+[debug] [2025-04-30T12:08:02.445Z] <<< [apiv2][body] PUT https://storage.googleapis.com/gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com/a29730d6-467e-4900-bfd7-f47b36276d86.zip [omitted]
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 22 (2nd Gen) function sendPostNotification(europe-west1)... 
+[debug] [2025-04-30T12:08:02.454Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:02.454Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:02.455Z] >>> [apiv2][query] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions functionId=sendPostNotification
+[debug] [2025-04-30T12:08:02.455Z] >>> [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions {"name":"projects/matchmood-24471/locations/europe-west1/functions/sendPostNotification","buildConfig":{"runtime":"nodejs22","entryPoint":"sendPostNotification","source":{"storageSource":{"bucket":"gcf-v2-uploads-188280949578.europe-west1.cloudfunctions.appspot.com","object":"a29730d6-467e-4900-bfd7-f47b36276d86.zip"}},"environmentVariables":{"GOOGLE_NODE_RUN_SCRIPTS":""}},"serviceConfig":{"environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"matchmood-24471\",\"storageBucket\":\"matchmood-24471.firebasestorage.app\"}","GCLOUD_PROJECT":"matchmood-24471","EVENTARC_CLOUD_EVENT_SOURCE":"projects/matchmood-24471/locations/europe-west1/services/sendPostNotification","FUNCTION_SIGNATURE_TYPE":"cloudevent","FUNCTION_TARGET":"sendPostNotification","LOG_EXECUTION_ID":"true"},"ingressSettings":null,"timeoutSeconds":null,"serviceAccountEmail":null,"availableMemory":"256Mi","minInstanceCount":null,"maxInstanceCount":null,"maxInstanceRequestConcurrency":80,"availableCpu":"1","vpcConnector":null,"vpcConnectorEgressSettings":null},"labels":{"deployment-tool":"cli-firebase--project-idx","firebase-functions-hash":"79f2b13ecc4e740f7d370f93d08c49cc622e4524"},"eventTrigger":{"eventType":"google.cloud.firestore.document.v1.created","retryPolicy":"RETRY_POLICY_DO_NOT_RETRY","eventFilters":[{"attribute":"database","value":"(default)"},{"attribute":"namespace","value":"(default)"},{"attribute":"document","value":"posts/{postId}","operator":"match-path-pattern"}],"triggerRegion":"eur3"}}
+[debug] [2025-04-30T12:08:19.725Z] <<< [apiv2][status] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions 400
+[debug] [2025-04-30T12:08:19.725Z] <<< [apiv2][body] POST https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions {"error":{"code":400,"message":"Validation failed for trigger projects/matchmood-24471/locations/eur3/triggers/sendpostnotification-936569: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.","status":"FAILED_PRECONDITION"}}
+[warn] ⚠  functions: Request to https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions?functionId=sendPostNotification had HTTP Error: 400, Validation failed for trigger projects/matchmood-24471/locations/eur3/triggers/sendpostnotification-936569: Invalid resource state for "": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role. 
+[warn] ⚠  functions: Since this is your first time using 2nd gen functions, we need a little bit longer to finish setting everything up. Retry the deployment in a few minutes. 
+[warn] ⚠  functions:  failed to create function projects/matchmood-24471/locations/europe-west1/functions/sendPostNotification 
+[error] Failed to create function projects/matchmood-24471/locations/europe-west1/functions/sendPostNotification
+[debug] [2025-04-30T12:08:19.733Z] Total Function Deployment time: 17278
+[debug] [2025-04-30T12:08:19.733Z] 1 Functions Deployed
+[debug] [2025-04-30T12:08:19.733Z] 1 Functions Errored
+[debug] [2025-04-30T12:08:19.734Z] 0 Function Deployments Aborted
+[debug] [2025-04-30T12:08:19.734Z] Average Function Deployment time: 17277
+[info] 
+[info] Functions deploy had errors with the following functions:
+	sendPostNotification(europe-west1)
+[debug] [2025-04-30T12:08:19.774Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:19.774Z] Checked if tokens are valid: true, expires at: 1746017938128
+[debug] [2025-04-30T12:08:19.774Z] >>> [apiv2][query] GET https://artifactregistry.googleapis.com/v1/projects/matchmood-24471/locations/europe-west1/repositories/gcf-artifacts [none]
+[debug] [2025-04-30T12:08:19.875Z] <<< [apiv2][status] GET https://artifactregistry.googleapis.com/v1/projects/matchmood-24471/locations/europe-west1/repositories/gcf-artifacts 404
+[debug] [2025-04-30T12:08:19.875Z] <<< [apiv2][body] GET https://artifactregistry.googleapis.com/v1/projects/matchmood-24471/locations/europe-west1/repositories/gcf-artifacts {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2025-04-30T12:08:19.875Z] Failed to check artifact cleanup policy for region europe-west1: Request to https://artifactregistry.googleapis.com/v1/projects/matchmood-24471/locations/europe-west1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found. {"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}},"response":{"statusCode":404}},"exit":1,"message":"Request to https://artifactregistry.googleapis.com/v1/projects/matchmood-24471/locations/europe-west1/repositories/gcf-artifacts had HTTP Error: 404, Requested entity was not found.","status":404}
+[debug] [2025-04-30T12:08:19.876Z] Functions deploy failed.
+[debug] [2025-04-30T12:08:19.876Z] {
+  "endpoint": {
+    "id": "sendPostNotification",
+    "project": "matchmood-24471",
+    "region": "europe-west1",
+    "entryPoint": "sendPostNotification",
+    "platform": "gcfv2",
+    "runtime": "nodejs22",
+    "eventTrigger": {
+      "eventType": "google.cloud.firestore.document.v1.created",
+      "retry": false,
+      "eventFilters": {
+        "database": "(default)",
+        "namespace": "(default)"
+      },
+      "eventFilterPathPatterns": {
+        "document": "posts/{postId}"
+      },
+      "region": "eur3"
+    },
+    "labels": {
+      "deployment-tool": "cli-firebase--project-idx"
+    },
+    "serviceAccount": null,
+    "ingressSettings": null,
+    "availableMemoryMb": null,
+    "timeoutSeconds": null,
+    "maxInstances": null,
+    "minInstances": null,
+    "concurrency": 80,
+    "vpc": null,
+    "environmentVariables": {
+      "FIREBASE_CONFIG": "{\"projectId\":\"matchmood-24471\",\"storageBucket\":\"matchmood-24471.firebasestorage.app\"}",
+      "GCLOUD_PROJECT": "matchmood-24471",
+      "EVENTARC_CLOUD_EVENT_SOURCE": "projects/matchmood-24471/locations/europe-west1/services/sendPostNotification"
+    },
+    "codebase": "default",
+    "cpu": 1,
+    "targetedByOnly": false,
+    "hash": "79f2b13ecc4e740f7d370f93d08c49cc622e4524"
+  },
+  "op": "create",
+  "original": {
+    "name": "FirebaseError",
+    "children": [],
+    "context": {
+      "function": "projects/matchmood-24471/locations/europe-west1/functions/sendPostNotification"
+    },
+    "exit": 1,
+    "message": "Failed to create function projects/matchmood-24471/locations/europe-west1/functions/sendPostNotification",
+    "original": {
+      "name": "FirebaseError",
+      "children": [],
+      "context": {
+        "body": {
+          "error": {
+            "code": 400,
+            "message": "Validation failed for trigger projects/matchmood-24471/locations/eur3/triggers/sendpostnotification-936569: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.",
+            "status": "FAILED_PRECONDITION"
+          }
+        },
+        "response": {
+          "statusCode": 400
+        }
+      },
+      "exit": 1,
+      "message": "Request to https://cloudfunctions.googleapis.com/v2/projects/matchmood-24471/locations/europe-west1/functions?functionId=sendPostNotification had HTTP Error: 400, Validation failed for trigger projects/matchmood-24471/locations/eur3/triggers/sendpostnotification-936569: Invalid resource state for \"\": Permission denied while using the Eventarc Service Agent. If you recently started to use Eventarc, it may take a few minutes before all necessary permissions are propagated to the Service Agent. Otherwise, verify that it has Eventarc Service Agent role.",
+      "status": 400
+    },
+    "status": 400,
+    "code": 400
+  }
+}
+[debug] [2025-04-30T12:08:19.879Z] Error: Failed to create function sendPostNotification in region europe-west1
+    at /home/user/.global_modules/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:294:27
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Fabricator.createV2Function (/home/user/.global_modules/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:278:30)
+    at async Fabricator.createEndpoint (/home/user/.global_modules/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:137:13)
+    at async handle (/home/user/.global_modules/lib/node_modules/firebase-tools/lib/deploy/functions/release/fabricator.js:89:17)
+[error] 
+[error] Error: There was an error deploying functions
